@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web-Based PECS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>🗣️ My Talking Board</h1>
+  <div class="modes" role="group" aria-label="Mode">
+    <button id="childBtn" class="mode on">👦 Child</button>
+    <button id="careBtn" class="mode">🛠 Caregiver</button>
+  </div>
+</header>
+
+<nav id="tabs" aria-label="Categories"></nav>
+
+<!-- Sentence strip (PECS style) -->
+<section id="strip" aria-label="Sentence strip">
+  <span class="chip start">I want</span>
+  <div id="stripCards"></div>
+  <button id="speakStrip" class="act go" aria-label="Speak sentence">🔊</button>
+  <button id="clearStrip" class="act red" aria-label="Clear sentence">✖</button>
+</section>
+
+<main id="grid" aria-live="polite"></main>
+
+<!-- Caregiver panel -->
+<section id="carePanel" hidden>
+  <h2>Caregiver Tools</h2>
+  <div class="panel-grid">
+    <div class="box">
+      <h3>Add Picture Card</h3>
+      <label for="labelIn">Word to speak</label>
+      <input id="labelIn" type="text" maxlength="25" placeholder="e.g. Apple">
+      <label for="catSel">Category</label>
+      <select id="catSel"></select>
+      <label>Picture</label>
+      <div id="emojiPick" class="emojis"></div>
+      <label class="fileBtn">📷 Upload own photo
+        <input id="fileIn" type="file" accept="image/*" hidden>
+      </label>
+      <div id="preview" aria-label="Preview"></div>
+      <button id="saveCard" class="act go wide">✔ Save Card</button>
+      <p id="msg" role="alert"></p>
+    </div>
+
+    <div class="box">
+      <h3>New Category</h3>
+      <input id="catIn" type="text" maxlength="20" placeholder="e.g. Toys">
+      <button id="addCat" class="act blue wide">+ Add Category</button>
+
+      <h3>Voice</h3>
+      <label for="langSel">Language</label>
+      <select id="langSel">
+        <option value="en-US">English</option>
+        <option value="fil-PH">Filipino</option>
+      </select>
+      <label for="rateIn">Speed</label>
+      <input id="rateIn" type="range" min="0.5" max="1.2" step="0.1" value="0.8">
+      <button id="testVoice" class="act blue wide">🔊 Test Voice</button>
+
+      <details>
+        <summary>Research Log</summary>
+        <table id="logTable"><thead><tr><th>#</th><th>Card setup (s)</th><th>Errors</th></tr></thead><tbody></tbody></table>
+        <button id="csvBtn" class="small">Download CSV</button>
+        <button id="clearLog" class="small">Clear log</button>
+        <button id="resetAll" class="small red">Reset board</button>
+      </details>
+    </div>
+  </div>
+</section>
+<script src="script.js"></script>
+</body>
+</html>
